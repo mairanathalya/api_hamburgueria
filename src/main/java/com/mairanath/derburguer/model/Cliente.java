@@ -21,6 +21,22 @@ public class Cliente implements Serializable {
 
     private String nome;
 
+    private String cpf;
+
+    private Long rg;
+
+    private Long telefone;
+
+    private String rua;
+
+    private Integer numero;
+
+    private String bairro;
+
+    private String cidade;
+
+    private String estado;
+
     @ManyToOne
     @JoinColumn(name = "email_cliente")
     private Email emails;

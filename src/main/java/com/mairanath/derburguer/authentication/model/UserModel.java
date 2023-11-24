@@ -1,8 +1,9 @@
 package com.mairanath.derburguer.authentication.model;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
@@ -10,6 +11,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "user_model")
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserModel implements UserDetails, Serializable {
 
     @Id
@@ -21,6 +24,7 @@ public class UserModel implements UserDetails, Serializable {
     @Column(nullable = false)
     private String password;
 
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns = @JoinColumn(name = "user_id"),
                inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -28,7 +32,7 @@ public class UserModel implements UserDetails, Serializable {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities(){
-        return this.roles;
+       return roles;
     }
 
     public List<RoleModel> getRoles(){

@@ -1,6 +1,6 @@
 package com.mairanath.derburguer.model;
 
-
+import com.mairanath.derburguer.enuns.TipoCardapio;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,35 +8,21 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Date;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Data
+@AllArgsConstructor
 @Builder(toBuilder = true)
 @Entity
-public class Produto implements Serializable {
+public class Cardapio implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;
-
     private String descricao;
 
-    private BigDecimal valor;
-
-    private String codigoDeBarras;
-
-    private Date dataFabricacao;
-
-    private Date dataValidade;
-
-    @ManyToOne
-    @JoinColumn(name = "fornecedor_id")
-    private Fornecedor fornecedor;
-
-
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, unique = true)
+    private TipoCardapio tipoCardapio;
 }

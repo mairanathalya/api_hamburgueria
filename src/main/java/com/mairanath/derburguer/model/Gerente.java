@@ -1,6 +1,5 @@
 package com.mairanath.derburguer.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,12 +8,12 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Builder(toBuilder = true)
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-public class Cliente implements Serializable {
+public class Gerente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,23 +22,9 @@ public class Cliente implements Serializable {
 
     private String cpf;
 
-    private Long rg;
-
-    private Long telefone;
-
-    private String rua;
-
-    private Integer numero;
-
-    private String bairro;
-
-    private String cidade;
-
-    private String estado;
+    private String telefone;
 
     @ManyToOne
-    @JoinColumn(name = "email_cliente")
+    @JoinColumn(name = "email_gerente")
     private Email emails;
-
-
 }

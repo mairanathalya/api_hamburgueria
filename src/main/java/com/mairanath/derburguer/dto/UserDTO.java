@@ -10,6 +10,7 @@ public class UserDTO {
     private String password;
     private List<RoleName> listrole;
 
+
     public String getUsername() {
         return username;
     }
@@ -33,4 +34,6 @@ public class UserDTO {
     public void setListrole(List<RoleName> listrole) {
         this.listrole = listrole;
     }
+
+
 }

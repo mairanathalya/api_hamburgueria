@@ -12,13 +12,14 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig  {
+
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/cliente/**").hasRole("USER")
-                .antMatchers("/produtos/**").hasRole("ADMIN")
-                .antMatchers("/fornecedores/**").hasRole("ADMIN")
-                .antMatchers("/v2/api-docs", "/swagger-resources/**", "/webjars/**").permitAll()
+                .antMatchers("/cliente/").hasRole("USER")
+                .antMatchers("/produtos/").hasRole("ADMIN")
+                .antMatchers("/v2/api-docs", "/swagger-resources/", "/webjars/**").permitAll()
+                .antMatchers("/auth/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -28,10 +29,9 @@ public class SecurityConfig  {
 
     }
 
+
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-
 }
-

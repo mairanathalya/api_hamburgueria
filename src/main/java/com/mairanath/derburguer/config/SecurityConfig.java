@@ -30,6 +30,7 @@ public class SecurityConfig  {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/cliente/").hasRole("USER")
                 .antMatchers("/produtos/").hasRole("ADMIN")
+                .antMatchers("/estoque/").hasRole("GEERENTE")
                 .antMatchers("/v2/api-docs", "/swagger-resources/**", "/webjars/**", "/swagger-ui/**").permitAll()
                 .antMatchers("/auth/**").permitAll()
                 .anyRequest().authenticated()
